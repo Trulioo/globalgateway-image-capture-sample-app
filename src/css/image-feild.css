@@ -1,0 +1,20 @@
+#image-field-container {
+    display: inline-block;
+    width:80%;
+}
+
+#image-field-title {
+    margin-bottom: 0em;
+    padding-left: 0rem;
+    text-align: left;
+}
+
+#image-field-img {
+    padding: 0rem;
+    max-width: 100%;
+    min-height: 100px;
+}
+
+#image-field-img-container {
+    text-align: left;
+}

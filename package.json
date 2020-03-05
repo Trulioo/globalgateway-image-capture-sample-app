@@ -1,0 +1,38 @@
+{
+  "name": "globalgateway-capture-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@trulioo/globalgateway-image-capture-sdk": "^1.0.2",
+    "bootstrap": "^4.3.1",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.2.0",
+    "react-select": "^3.0.8"
+  },
+  "scripts": {
+    "start": "set HTTPS=true&react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "update-gg-capture": "npm run update-gg-sdk & rm -r ./public/GlobalGatewaySDK & npm run copy-gg-sdk",
+    "update-gg-sdk": "npm install @trulioo/globalgateway-image-capture-sdk@latest",
+    "copy-gg-sdk": "cp -r node_modules/@trulioo/globalgateway-image-capture-sdk/GlobalGatewaySDK/ ./public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
