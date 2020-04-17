@@ -1,7 +1,6 @@
-
-  
-
 # GlobalGateway Image Capture Sample App
+
+### Pre-Requisite Git Bash installed for Windows only
 
 To run the web app:
 
