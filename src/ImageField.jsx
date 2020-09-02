@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './css/image-feild.css';
 
 export default function ImageSummary({
-  Title, ImageSrc,
+  Title, ImageSrc
 }) {
   return (
     <div id="image-field-container">
@@ -22,6 +22,9 @@ export default function ImageSummary({
 
 ImageSummary.propTypes = {
   Title: PropTypes.string.isRequired,
-  ImageSrc: PropTypes.string.isRequired
+  ImageSrc: PropTypes.string,
 };
 
+ImageSummary.defaultProps = {
+  ImageSrc: null
+};
