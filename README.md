@@ -1,5 +1,19 @@
 # GlobalGateway Image Capture Sample App
 
+### Release Notes
+GlobalGateway Web SDK **v1.0.23** provides the following additional benefits to the customers:
+
+
+* Accessibility support - resizing of the text and support for iOS (Voice Over), android (Voice Assistant) and 3rd party (JAWS and NVDA) desktop Screen Readers
+* For passport auto-capture, a new hint message “Passport not detected” is added when a non-passport document is scanned by a person or MRZ is obstructed
+* Size of the guide window for documents and selfies have been increased to capture a larger image, resulting in fewer face comparison and liveness errors across global identity documents especially GBR, NLD, and ITA
+* Removed the dependency on JQuery when embedding the SDK as a video element 
+* User behaviour information available in API response
+    * TimeStamp information from the document capture
+    * Retry count can be added during document capture 
+    * Liveness confirmation, if the user performed selfie using auto capture functionality
+
+
 ### Windows Prerequisites
 Git Bash for Windows https://git-scm.com/downloads  
 Node Js for Windows https://nodejs.org/en/download/  
