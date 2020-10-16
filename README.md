@@ -1,6 +1,8 @@
 # GlobalGateway Image Capture Sample App
 
 ### Release Notes
+Sept 16:
+
 GlobalGateway Web SDK **v1.0.23** provides the following additional benefits to the customers:
 
 
@@ -12,6 +14,14 @@ GlobalGateway Web SDK **v1.0.23** provides the following additional benefits to 
     * TimeStamp information from the document capture
     * Retry count can be added during document capture 
     * Liveness confirmation, if the user performed selfie using auto capture functionality
+
+Oct 15:
+
+GlobalGateway Web SDK **v1.0.29** provides the following additional benefits to the customers:
+
+* Added a feature check for older Android/Chrome devices not fully supported for WebGL for Selfie capture. Certain older devices which are not fully supported for Selfie now throw the following error: “WEBGL_SHADER_NOT_SUPPORTED”. This allows integrators to fall back to manual for Selfie capture
+* The startBarcodeCapture was reported to have issues and has been replaced with startDocumentCapture which captured the barcode with more precision
+* Added a feature to retrieve upstream IP Address for analytics purpose
 
 
 ### Windows Prerequisites

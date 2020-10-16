@@ -27,7 +27,6 @@ const captureTypeOption = [
   { value: 'DocumentFront', label: 'ID Document Front' },
   { value: 'DocumentBack', label: 'ID Document Back' },
   { value: 'Passport', label: 'Passport' },
-  { value: 'Barcode', label: 'Barcode (US, Canada only)' },
   { value: 'LivePhoto', label: 'Live Photo' },
 ];
 
@@ -75,9 +74,6 @@ function App() {
         break;
       case 'Passport':
         GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
-        break;
-      case 'Barcode' :
-        GlobalGatewayCapture.StartBarcodeCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
         break;
       case 'LivePhoto' :
         GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
