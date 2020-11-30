@@ -23,6 +23,12 @@ GlobalGateway Web SDK **v1.0.29** provides the following additional benefits to 
 * The startBarcodeCapture was reported to have issues and has been replaced with startDocumentCapture which captured the barcode with more precision
 * Added a feature to retrieve upstream IP Address for analytics purpose
 
+Nov 31:
+GlobalGateway Web SDK **v1.0.33** provides the following additional benefits to the customers:
+* Fixed intermittent freezing issue on Android 11 devices - Pixel 2, 3 and 4 series
+* Fixed intermittent manual selfie crash issue
+* Fixed “HoldPhone Upright” message showing up on some low to mid-end Android devices even when the device was actually held upright, preventing users from auto-capturing selfies
+
 
 ### Windows Prerequisites
 Git Bash for Windows https://git-scm.com/downloads  

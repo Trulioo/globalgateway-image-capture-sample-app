@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@trulioo/globalgateway-image-capture-sdk": "^1.0.29",
+    "@trulioo/globalgateway-image-capture-sdk": "1.0.33",
     "bootstrap": "^4.3.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "update-gg-capture": "npm run update-gg-sdk & rm -r ./public/GlobalGatewayImageCaptureSDK & npm run copy-gg-sdk",
-    "update-gg-sdk": "npm install @trulioo/globalgateway-image-capture-sdk@latest",
+    "update-gg-sdk": "npm install @trulioo/globalgateway-image-capture-sdk@1.0.33 --save --save-exact",
     "copy-gg-sdk": "cp -r node_modules/@trulioo/globalgateway-image-capture-sdk/GlobalGatewayImageCaptureSDK/ ./public"
   },
   "eslintConfig": {

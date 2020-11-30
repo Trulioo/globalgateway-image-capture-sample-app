@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const GlobalGatewayCapture = require('@trulioo/globalgateway-image-capture-sdk');
 
+const useCaptureButton = false; // Change this value if you'd like to use the button while capturing
 
 // const GlobalGatewayHints = {
 //   GLOBALGATEWAY_HEAD_OUTSIDE: 'Place Face in Oval',
@@ -65,18 +66,19 @@ function App() {
   };
 
   const startCapture = () => {
+    const useCaptureButtonWithAutoOnly = (isAuto) ? useCaptureButton : false; // Do not modify this
     setError('');
     setImgResult(null);
     switch(captureType) {
       case 'DocumentBack':
       case 'DocumentFront':
-        GlobalGatewayCapture.StartDocumentCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
+        GlobalGatewayCapture.StartDocumentCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
         break;
       case 'Passport':
-        GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
+        GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
         break;
       case 'LivePhoto' :
-        GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError);
+        GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
         break;
       default:
         break;
