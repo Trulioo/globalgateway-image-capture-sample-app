@@ -14,11 +14,11 @@
 }
 
 #ui-container {
-    height: 100%;
-    background: #e9f9ff;
-    overflow: overlay; 
+  height: 100%;
+  background: #e9f9ff;
+  overflow: overlay;
 }
-  
+
 #main-container {
   background: white;
   width: 65%;
@@ -31,8 +31,9 @@
   margin: 5px;
 }
 
-.captureModeSelection{
-  width: 250px;
+.GeoCollectionSelection,
+.captureModeSelection {
+  width: 350px;
   margin: 5px;
   margin-bottom: 1rem;
 }
@@ -45,7 +46,7 @@
 
 #begin-button {
   background-color: #1ba5ea;
-  margin-left:5px;
+  margin-left: 5px;
   margin-bottom: 1rem;
 }
 
@@ -58,8 +59,8 @@
     font-weight: 600;
   }
 
-  #main-container{
+  #main-container {
     width: 80%;
-    padding: 1rem
+    padding: 1rem;
   }
 }

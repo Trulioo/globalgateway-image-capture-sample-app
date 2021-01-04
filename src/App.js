@@ -36,12 +36,18 @@ const captureMode = [
   { value: 'Manual', label: 'Manual' },
 ];
 
+const geoMode = [
+  { value: true, label: 'Enable Geolocation Collection' },
+  { value: false, label: 'Disable Geolocation Collection' },
+];
+
 const startMessage = 'Starting GlobalGateway Capture';
 const defaultTimeout = 15 * 1000;
 
 function App() {
   const [error, setError] = useState('');
   const [isAuto, setIsAuto] = useState(true);
+  const [shouldCollectGeo, setShouldCollectGeo] = useState(true);
   const [captureType, setCaptureType] = useState(captureTypeOption[0].value);
 
   const [imgResult, setImgResult] = useState(null);
@@ -72,13 +78,13 @@ function App() {
     switch(captureType) {
       case 'DocumentBack':
       case 'DocumentFront':
-        GlobalGatewayCapture.StartDocumentCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
+        GlobalGatewayCapture.StartDocumentCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
         break;
       case 'Passport':
-        GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
+        GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
         break;
       case 'LivePhoto' :
-        GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly);
+        GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
         break;
       default:
         break;
@@ -119,6 +125,15 @@ function App() {
             isSearchable={false}
             onChange={(selected) => {
               setCaptureType(selected.value);
+            }}
+          />
+          <Dropdown 
+            className="GeoCollectionSelection"
+            defaultValue={geoMode[0]}
+            options={geoMode}
+            isSearchable={false}
+            onChange={(selected) => {
+              setShouldCollectGeo(selected.value);
             }}
           />
           <Button 
