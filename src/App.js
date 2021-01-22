@@ -21,14 +21,25 @@ const useCaptureButton = false; // Change this value if you'd like to use the bu
 //   GLOBALGATEWAY_READY_POSE: 'Hold it There',
 //   GLOBALGATEWAY_NO_FACE_FOUND: 'No Face Detected',
 //   GLOBALGATEWAY_ERROR_GLARE: 'Reduce Glare',
-//   GLOBALGATEWAY_ERROR_FOUR_CORNER: 'Document Not Found',
+//   GLOBALGATEWAY_ERROR_FOUR_CORNER: 'Not all document corners visible',
+//   GLOBALGATEWAY_SUCCESS: 'Success',
+//   GLOBALGATEWAY_ERROR_TOO_DARK: 'Too dark. use good lighting',
+//   GLOBALGATEWAY_ERROR_FOCUS: 'Hold Steady',
+//   GLOBALGATEWAY_ERROR_MRZ_MISSING: 'Passport Not Detected',
+//   GLOBALGATEWAY_CV_NO_BARCODE_FOUND: 'No Barcode Detected',
+//   GLOBALGATEWAY_ERROR_TOO_FAR: 'Document Too Far',
+//   GLOBALGATEWAY_ERROR_TOO_CLOSE: 'Document Too Close',
+//   GLOBALGATEWAY_ERROR_NOT_CENTERED: 'Document Not Centered',
+//   GLOBALGATEWAY_ERROR_MIN_PADDING: 'Move further away',
+//   GLOBALGATEWAY_ERROR_HORIZONTAL_FILL: 'Move closer'
 // };
 
 const captureTypeOption = [
   { value: 'DocumentFront', label: 'ID Document Front' },
   { value: 'DocumentBack', label: 'ID Document Back' },
-  { value: 'Passport', label: 'Passport' },
   { value: 'LivePhoto', label: 'Live Photo' },
+  { value: 'Passport', label: 'Passport' },
+  { value: 'GenericDocument', label: 'Generic Document' },
 ];
 
 const captureMode = [
@@ -66,31 +77,70 @@ function App() {
     } else {
       errorMessage = 'Capture timeout';
     }
-    if(errorMessage !== '') {
+    if (errorMessage !== '') {
       setError(errorMessage);
     }
   };
 
   const startCapture = () => {
-    const useCaptureButtonWithAutoOnly = (isAuto) ? useCaptureButton : false; // Do not modify this
+    const useCaptureButtonWithAutoOnly = isAuto ? useCaptureButton : false; // Do not modify this
     setError('');
     setImgResult(null);
-    switch(captureType) {
+    switch (captureType) {
       case 'DocumentBack':
       case 'DocumentFront':
-        GlobalGatewayCapture.StartDocumentCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
+        GlobalGatewayCapture.StartDocumentCapture(
+          startMessage,
+          defaultTimeout,
+          isAuto,
+          onImgSuccess,
+          onError,
+          useCaptureButtonWithAutoOnly,
+          0,
+          shouldCollectGeo,
+        );
         break;
       case 'Passport':
-        GlobalGatewayCapture.StartPassportCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
+        GlobalGatewayCapture.StartPassportCapture(
+          startMessage,
+          defaultTimeout,
+          isAuto,
+          onImgSuccess,
+          onError,
+          useCaptureButtonWithAutoOnly,
+          0,
+          shouldCollectGeo,
+        );
         break;
-      case 'LivePhoto' :
-        GlobalGatewayCapture.StartSelfieCapture(startMessage, defaultTimeout, isAuto, onImgSuccess, onError, useCaptureButtonWithAutoOnly, 0, shouldCollectGeo);
+      case 'LivePhoto':
+        GlobalGatewayCapture.StartSelfieCapture(
+          startMessage,
+          defaultTimeout,
+          isAuto,
+          onImgSuccess,
+          onError,
+          useCaptureButtonWithAutoOnly,
+          0,
+          shouldCollectGeo,
+        );
+        break;
+      case 'GenericDocument':
+        GlobalGatewayCapture.StartGenericDocumentCapture(
+          startMessage,
+          defaultTimeout,
+          isAuto,
+          onImgSuccess,
+          onError,
+          useCaptureButtonWithAutoOnly,
+          0,
+          shouldCollectGeo,
+        );
         break;
       default:
         break;
-    }  
+    }
   };
- 
+
   // Default hint messages can be found at the beginning of this file
   // Hint messages can be customized:
   // GlobalGatewayCapture.GlobalGatewayHints.GLOBALGATEWAY_ERROR_FOUR_CORNER = "Cannot Find Document";
@@ -101,15 +151,13 @@ function App() {
         <div>
           <img id="trulioo-content-container-img" src="/images/global-gateway-title.svg" alt="" />
         </div>
-
-        <div className="text-box"> 
+        <div className="text-box">
           <h3 className="trulioo-header-font">To start the image capture</h3>
           <p className="trulioo-body-font">1. Select the capture mode to either Auto or Manual.</p>
           <p className="trulioo-body-font">2. Select the Document Type and click Begin.</p>
         </div>
-        
         <div>
-          <Dropdown 
+          <Dropdown
             className="captureModeSelection"
             defaultValue={captureMode[0]}
             options={captureMode}
@@ -118,7 +166,7 @@ function App() {
               setIsAuto(selected.value === 'Auto');
             }}
           />
-          <Dropdown 
+          <Dropdown
             className="captureModeSelection"
             defaultValue={captureTypeOption[0]}
             options={captureTypeOption}
@@ -127,7 +175,7 @@ function App() {
               setCaptureType(selected.value);
             }}
           />
-          <Dropdown 
+          <Dropdown
             className="GeoCollectionSelection"
             defaultValue={geoMode[0]}
             options={geoMode}
@@ -136,30 +184,24 @@ function App() {
               setShouldCollectGeo(selected.value);
             }}
           />
-          <Button 
-            id="begin-button"
-            onClick={startCapture}
-            variant="primary"
-          >
+          <Button id="begin-button" onClick={startCapture} variant="primary">
             Begin
           </Button>
         </div>
-        
         <br />
         <br />
-        <div className="text-box"> 
+        <div className="text-box">
           <h3 className="trulioo-header-font">Capture Result</h3>
-          <p className='trulioo-body-font'>{error}</p>
+          <p className="trulioo-body-font">{error}</p>
         </div>
-        
         <div>
           <div className="row">
             <ImageField Title="" ImageSrc={imgResult} />
           </div>
         </div>
       </div>
-    </div>  
-    );
+    </div>
+  );
 }
 
 export default App;
